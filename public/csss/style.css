@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#form {
+  width: 250px;
+  margin: 8px 16px 8px 0;
+}
+
+#form input {
+  width: 150px;
+  padding: 16px;
+  border: 1px solid #333;
+}
+
+#form button {
+  float: right;
+  width: 95px;
+}
+
+#geo-location {
+  width: 250px;
+  margin: 8px 16px 8px 0;
+}
+
+#form button,
+#geo-location {
+  cursor: pointer;
+  padding: 16px;
+  background-color: #f8f7f7f7;
+  border: 1px solid #333;
+  font-weight: bold;
+}
+
+#form button:hover,
+#geo-location:hover {
+  background: #333;
+  color: #fff;
+}
