@@ -13,12 +13,16 @@ const geoLocationLink = document.querySelector('#geo-location-link');
 const messagesTemplate = document.querySelector('#message-template').innerHTML;
 const linksTemplate = document.querySelector('#location-message-template').innerHTML;
 
+// Options
+const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+
 // Event: Initializing main script
 document.addEventListener('DOMContentLoaded', () => {
   socket.on('message', (message) => {
-    console.log(message);
+    // console.log(message);
 
     const html = Mustache.render(messagesTemplate, {
+      username: message.user,
       message: message.text,
       createdAt: moment(message.createdAt).format('hh:mm a'),
     });
@@ -28,9 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 socket.on('locationMessage', (message) => {
-  console.log(message.url);
+  console.log(message);
 
   const html = Mustache.render(linksTemplate, {
+    username: message.user,
     url: message.url,
     createdAt: moment(message.createdAt).format('hh:mm a'),
   });
@@ -83,4 +88,11 @@ $geoLocationButton.addEventListener('click', () => {
       }
     );
   });
+});
+
+socket.emit('join', { username, room }, (error) => {
+  if (error) {
+    alert(error);
+    location.href = '/';
+  }
 });

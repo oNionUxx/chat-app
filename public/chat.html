@@ -17,7 +17,7 @@
 
         <div class="compose">
           <form id="form">
-            <input placeholder="Message" type="text" name="message" id="message" />
+            <input placeholder="Message" type="text" name="message" id="message" autocomplete="off" />
             <button type="submit">SEND</button>
           </form>
 
@@ -29,7 +29,7 @@
     <script id="message-template" type="text/html">
       <div class="message">
         <p>
-          <span class="message__name">Omer Lubko</span>
+          <span class="message__name">{{ username }}</span>
           <span class="message__meta">{{ createdAt }}</span>
         </p>
         <p>{{ message }}</p>
@@ -40,7 +40,7 @@
       <div class="message">
         <p>
           {{ message.url }}
-          <span class="message__name">Omer Lubko</span>
+          <span class="message__name">{{ username }}</span>
           <span class="message__meta">{{ createdAt }} - <a href="{{ url }}" target="_blank">See Location</a></span>
         </p>
       </div>
